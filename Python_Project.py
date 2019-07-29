@@ -60,7 +60,7 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    # load data file into a dataframe
+    # load CITY_DATA file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
 
     # convert the Start Time column to datetime
@@ -121,19 +121,16 @@ def station_stats(df):
     start_time = time.time()
 
     # TO DO: display most commonly used start station
-
     Start_Station = df['Start Station'].value_counts().idxmax()
     print('Most Commonly used start station:', Start_Station)
 
 
     # TO DO: display most commonly used end station
-
     End_Station = df['End Station'].value_counts().idxmax()
     print('\nMost Commonly used end station:', End_Station)
 
 
     # TO DO: display most frequent combination of start station and end station trip
-
     Combination_Station = df.groupby(['Start Station', 'End Station']).count()
     print('\nMost Commonly used combination of start station and end station trip:', Start_Station, " & ", End_Station)
 
@@ -149,13 +146,11 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # TO DO: display total travel time
-
     Total_Travel_Time = sum(df['Trip Duration'])
     print('Total travel time:', Total_Travel_Time/86400, " Days")
 
 
     # TO DO: display mean travel time
-
     Mean_Travel_Time = df['Trip Duration'].mean()
     print('Mean travel time:', Mean_Travel_Time/60, " Minutes")
 
@@ -171,13 +166,12 @@ def user_stats(df):
     start_time = time.time()
 
     # TO DO: Display counts of user types
-
     user_types = df['User Type'].value_counts()
-    #print(user_types)
+    
+	#print(user_types)
     print('User Types:\n', user_types)
 
     # TO DO: Display counts of gender
-
     try:
       gender_types = df['Gender'].value_counts()
       print('\nGender Types:\n', gender_types)
@@ -185,7 +179,6 @@ def user_stats(df):
       print("\nGender Types:\nNo data available for this month.")
 
     # TO DO: Display earliest, most recent, and most common year of birth
-
     try:
       Earliest_Year = df['Birth Year'].min()
       print('\nEarliest Year:', Earliest_Year)
